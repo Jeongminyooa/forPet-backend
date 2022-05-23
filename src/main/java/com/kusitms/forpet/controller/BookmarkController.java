@@ -1,6 +1,6 @@
 package com.kusitms.forpet.controller;
 
-import com.kusitms.forpet.domain.Bookmark;
+import com.kusitms.forpet.domain.BookmarkPlace;
 import com.kusitms.forpet.dto.OfflineMapDto;
 import com.kusitms.forpet.dto.response.ApiResponse;
 import com.kusitms.forpet.repository.BookmarkRep;
@@ -47,7 +47,7 @@ public class BookmarkController {
         String accessToken = HeaderUtil.getAccessToken(request);
         Long userid = tokenProvider.getUserIdFromToken(accessToken);
 
-        List<Bookmark> bookmarkList = bookmarkRepository.find(category, userid);
+        List<BookmarkPlace> bookmarkList = bookmarkRepository.find(category, userid);
 
 
         //entity -> dto 변환
@@ -75,7 +75,7 @@ public class BookmarkController {
         String accessToken = HeaderUtil.getAccessToken(request);
         Long userid = tokenProvider.getUserIdFromToken(accessToken);
 
-        List<Bookmark> bookmarkList = bookmarkRepository.findByUserId(userid);
+        List<BookmarkPlace> bookmarkList = bookmarkRepository.findByUserId(userid);
 
         //entity -> dto 변환
         List<OfflineMapDto.BookmarkByUserIdDto> collect = bookmarkList.stream().map(m -> new OfflineMapDto.BookmarkByUserIdDto(m.getId(), m.getUser().getUserId(), m.getPlaceInfo().getId(),

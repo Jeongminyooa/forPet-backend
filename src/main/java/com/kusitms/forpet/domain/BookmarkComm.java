@@ -9,16 +9,7 @@ import javax.persistence.*;
 @Table(name = "bookmark_comm")
 @NoArgsConstructor
 @Getter
-public class BookmarkComm {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bookmark_id",unique = true)
-    private Long id;
-
-    //회원 참조관계
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+public class BookmarkComm extends Bookmark{
 
     //커뮤니티 참조관계
     @ManyToOne
@@ -27,7 +18,7 @@ public class BookmarkComm {
 
     //==연관관계 메서드==//
     public void setUser(User user) {
-        this.user = user;
+        this.setUser(user);
         user.getBookmarkCommList().add(this);
     }
 
@@ -35,4 +26,5 @@ public class BookmarkComm {
         this.community = community;
         community.getBookmarkCommList().add(this);
     }
+
 }

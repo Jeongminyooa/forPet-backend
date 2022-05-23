@@ -38,7 +38,7 @@ public class placeInfo {
 
     @JsonIgnore
     @OneToMany(mappedBy = "placeInfo")
-    private List<Bookmark> bookMarkList = new ArrayList<>();
+    private List<BookmarkPlace> bookMarkList = new ArrayList<>();
 
 
     //== 비즈니스 로직 ==//

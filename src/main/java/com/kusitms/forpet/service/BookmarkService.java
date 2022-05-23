@@ -1,6 +1,6 @@
 package com.kusitms.forpet.service;
 
-import com.kusitms.forpet.domain.Bookmark;
+import com.kusitms.forpet.domain.BookmarkPlace;
 import com.kusitms.forpet.domain.User;
 import com.kusitms.forpet.domain.placeInfo;
 import com.kusitms.forpet.repository.APIRep;
@@ -27,11 +27,11 @@ public class BookmarkService {
         User user = userRepository.findById(userid).get();
 
         //북마크 생성
-        Bookmark bookmark = new Bookmark();
+        BookmarkPlace bookmark = new BookmarkPlace();
         bookmark.setPlaceInfo(placeInfo);
         bookmark.setUser(user);
 
-        Bookmark save = bookmarkRepository.save(bookmark);
+        BookmarkPlace save = bookmarkRepository.save(bookmark);
 
         return save.getId();
     }

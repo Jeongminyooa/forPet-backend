@@ -49,13 +49,17 @@ public class User {
     //북마크(offline-map) 참조관계
     @JsonIgnore
     @OneToMany(mappedBy = "user")
-    private List<Bookmark> bookmarkList = new ArrayList<>();
+    private List<BookmarkPlace> bookmarkPlaceList = new ArrayList<>();
 
     //북마크(QnaBoard) 참조관계
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<BookmarkQna> bookmarkQnaList = new ArrayList<>();
 
+    // 북마크(Community) 참조 관계
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<BookmarkComm> bookmarkCommList = new ArrayList<>();
 
     //백과사전 참조관계
     @JsonIgnore
@@ -72,11 +76,6 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Community> communityList = new ArrayList<>();
-
-    // 북마크(Community) 참조 관계
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<BookmarkComm> bookmarkCommList = new ArrayList<>();
 
     // 좋아요(Community 참조 관계)
     @JsonIgnore

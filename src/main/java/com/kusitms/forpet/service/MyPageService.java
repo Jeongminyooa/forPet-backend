@@ -164,7 +164,7 @@ public class MyPageService {
      */
     public List<MyPageDto.BookmarkOfflineDto> getBookmarkOfflineMap(Long userid) {
         User user = userRepository.findById(userid).get();
-        List<Bookmark> list = user.getBookmarkList();
+        List<BookmarkPlace> list = user.getBookmarkList();
 
         //entity -> dto 변환
         List<MyPageDto.BookmarkOfflineDto> collect = list.stream().map(m -> new MyPageDto.BookmarkOfflineDto(m.getPlaceInfo().getId(), m.getPlaceInfo().getCategory(),

@@ -8,30 +8,18 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
+@Table(name = "bookmark_place")
 @NoArgsConstructor
-public class BookmarkQna {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bookmark_id",unique = true)
-    private Long id;
-
-    //회원 참조관계
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
+@Getter
+public class BookmarkQna extends Bookmark{
     //백과사전 참조관계
     @ManyToOne
     @JoinColumn(name = "qna_id")
     private QnaBoard qnaBoard;
 
-
     //==연관관계 메서드==//
     public void setUser(User user) {
-        this.user = user;
+        this.setUser(user);
         user.getBookmarkQnaList().add(this);
     }
 
